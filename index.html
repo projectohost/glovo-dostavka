@@ -4,43 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GostVorOn</title>
+    <title>GostVorOn — Доставка їжі</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <h2>GostVorOn</h2>
-        <nav>
-            <a href="#">Головна</a>
-            <a href="#">Ресторани</a>
-            <a href="#">Кошик</a>
-        </nav>
-    </header>
+<header class="header">
+    <a href="#" class="logo">
+        <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="#ffc229" stroke-width="5" stroke-dasharray="190 18 35 12" stroke-linecap="round" transform="rotate(-35 50 50)"/>
+            <path d="M72 23 L92 31 L74 36 L64 45" fill="#ffc229"/>
+            <path d="M70 27 C58 14 38 18 27 32 C15 46 19 66 32 75 C44 84 62 77 69 64 L51 64 L51 53 L83 53 C84 72 68 88 47 88 C25 88 10 70 12 49 C14 26 33 10 53 12 C65 12 73 17 79 24 Z" fill="#17191b"/>
+            <path d="M35 29 L56 23 L76 29 L60 34 L48 45 L39 42 Z" fill="#ffc229"/>
+            <path d="M39 42 L59 34 L49 48 L37 54 L29 68 L32 48 Z" fill="#080a0c"/>
+            <circle cx="56" cy="29" r="2.5" fill="#fff"/>
+            <circle cx="57" cy="29" r="1.2" fill="#111"/>
+            <path d="M29 17 L20 10 M18 29 L7 25 M24 75 L16 83 M72 77 L81 84 M80 15 L87 9" stroke="#ffc229" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Gost<span>VorOn</span></span>
+    </a>
 
+    <nav class="menu">
+        <a href="#" class="active">Головна</a>
+        <a href="#restaurants">Ресторани</a>
+        <a href="#cart">Контакти</a>
+    </nav>
+
+    <button class="profile" id="profile-button" aria-label="Профіль">♙</button>
+</header>
+
+<main>
     <section class="hero">
-        <h1>Доставка їжі до твоїх дверей</h1>
-        <p>Обирай улюблені страви та замовляй онлайн</p>
-        <button>Замовити зараз</button>
-    </section>
+        <div class="branch branch-left">✦</div>
+        <div class="branch branch-right">✦</div>
 
-    <section class="restaurants">
-        <h2>Популярні заклади</h2>
+        <div class="hero-text">
+            <p class="eyebrow">СМАЧНА ДОСТАВКА</p>
+            <h1>Доставка їжі<br><span>до твоїх дверей</span></h1>
+            <p class="description">
+                Смачні страви з найкращих ресторанів твого міста.
+                Швидко, зручно, надійно.
+            </p>
 
-        <div class="cards">
-            <div class="card">
-                <img src="" alt="Бургер">
-                <h3>Burger House</h3>
-                <p>Бургери та картопля фрі</p>
+            <form class="search" id="search-form">
+                <input type="text" id="address" placeholder="Введи свою адресу..." aria-label="Адреса доставки">
+                <button type="submit">Знайти</button>
+            </form>
+            <p class="search-message" id="search-message" aria-live="polite"></p>
+        </div>
+
+        <div class="hero-art">
+            <div class="hero-emblem">
+                <svg viewBox="0 0 300 300" class="big-raven" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="150" cy="150" r="125" fill="none" stroke="#ffc229" stroke-width="8" stroke-dasharray="340 35 90 25" stroke-linecap="round" transform="rotate(-35 150 150)"/>
+                    <path d="M211 59 L253 78 L220 88 L196 112" fill="#ffc229"/>
+                    <path d="M207 72 C172 38 117 45 83 79 C47 115 53 174 87 205 C121 239 174 223 190 190 L143 190 L143 160 L229 160 C229 214 191 249 143 249 C83 249 42 204 42 151 C42 91 88 44 145 44 C173 44 197 53 214 72 Z" fill="#080a0c" stroke="#25282b" stroke-width="3"/>
+                    <path d="M98 91 L153 68 L207 82 L169 99 L137 130 L108 123 Z" fill="#ffc229"/>
+                    <path d="M108 123 L166 99 L139 136 L108 151 L83 187 L91 139 Z" fill="#080a0c"/>
+                    <path d="M145 112 L158 108" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="161" cy="108" r="5" fill="#fff"/>
+                    <circle cx="163" cy="108" r="2.5" fill="#ffc229"/>
+                </svg>
             </div>
-
-            <div class="card">
-                <img src="" alt="Піца">
-                <h3>Pizza Time</h3>
-                <p>Смачна італійська піца</p>
-            </div>
+            <div class="hero-tag"><span>✦</span><p>Доставка<br>з характером</p></div>
         </div>
     </section>
+
+    <section class="restaurants" id="restaurants">
+        <div class="section-heading">
+            <div>
+                <h2><span class="dash">—</span> Популярні заклади</h2>
+                <p>Обирай, що сьогодні хочеться скуштувати</p>
+            </div>
+            <div class="section-mark">G / V</div>
+        </div>
+
+        <div class="filter-bar">
+            <input type="search" id="restaurant-filter" placeholder="Знайти ресторан або кухню..." aria-label="Пошук ресторанів">
+            <span id="restaurant-count">30 закладів</span>
+        </div>
+
+        <div class="cards" id="restaurant-cards"></div>
+        <p class="empty-message" id="empty-message" hidden>Нічого не знайдено. Спробуй інший пошуковий запит.</p>
+    </section>
+</main>
+
+<footer id="cart">
+    <p class="footer-logo">Gost<span>VorOn</span></p>
+    <p>Доставка з характером ворона.</p>
+    <p class="copyright">© 2026 GostVorOn</p>
+</footer>
 
 </body>
 </html>
