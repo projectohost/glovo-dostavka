@@ -4,97 +4,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101112">
     <title>GostVorOn — Доставка їжі</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-
-<header class="header">
-    <a href="#" class="logo">
-        <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="42" fill="none" stroke="#ffc229" stroke-width="5" stroke-dasharray="190 18 35 12" stroke-linecap="round" transform="rotate(-35 50 50)"/>
-            <path d="M72 23 L92 31 L74 36 L64 45" fill="#ffc229"/>
-            <path d="M70 27 C58 14 38 18 27 32 C15 46 19 66 32 75 C44 84 62 77 69 64 L51 64 L51 53 L83 53 C84 72 68 88 47 88 C25 88 10 70 12 49 C14 26 33 10 53 12 C65 12 73 17 79 24 Z" fill="#17191b"/>
-            <path d="M35 29 L56 23 L76 29 L60 34 L48 45 L39 42 Z" fill="#ffc229"/>
-            <path d="M39 42 L59 34 L49 48 L37 54 L29 68 L32 48 Z" fill="#080a0c"/>
-            <circle cx="56" cy="29" r="2.5" fill="#fff"/>
-            <circle cx="57" cy="29" r="1.2" fill="#111"/>
-            <path d="M29 17 L20 10 M18 29 L7 25 M24 75 L16 83 M72 77 L81 84 M80 15 L87 9" stroke="#ffc229" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <span class="logo-text">Gost<span>VorOn</span></span>
-    </a>
-
-    <nav class="menu">
-        <a href="#" class="active">Головна</a>
-        <a href="#restaurants">Ресторани</a>
-        <a href="#cart">Контакти</a>
-    </nav>
-
-    <button class="profile" id="profile-button" aria-label="Профіль">♙</button>
-</header>
-
-<main>
-    <section class="hero">
-        <div class="branch branch-left">✦</div>
-        <div class="branch branch-right">✦</div>
-
-        <div class="hero-text">
-            <p class="eyebrow">СМАЧНА ДОСТАВКА</p>
-            <h1>Доставка їжі<br><span>до твоїх дверей</span></h1>
-            <p class="description">
-                Смачні страви з найкращих ресторанів твого міста.
-                Швидко, зручно, надійно.
-            </p>
-
-            <form class="search" id="search-form">
-                <input type="text" id="address" placeholder="Введи свою адресу..." aria-label="Адреса доставки">
-                <button type="submit">Знайти</button>
-            </form>
-            <p class="search-message" id="search-message" aria-live="polite"></p>
-        </div>
-
-        <div class="hero-art">
-            <div class="hero-emblem">
-                <svg viewBox="0 0 300 300" class="big-raven" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="150" cy="150" r="125" fill="none" stroke="#ffc229" stroke-width="8" stroke-dasharray="340 35 90 25" stroke-linecap="round" transform="rotate(-35 150 150)"/>
-                    <path d="M211 59 L253 78 L220 88 L196 112" fill="#ffc229"/>
-                    <path d="M207 72 C172 38 117 45 83 79 C47 115 53 174 87 205 C121 239 174 223 190 190 L143 190 L143 160 L229 160 C229 214 191 249 143 249 C83 249 42 204 42 151 C42 91 88 44 145 44 C173 44 197 53 214 72 Z" fill="#080a0c" stroke="#25282b" stroke-width="3"/>
-                    <path d="M98 91 L153 68 L207 82 L169 99 L137 130 L108 123 Z" fill="#ffc229"/>
-                    <path d="M108 123 L166 99 L139 136 L108 151 L83 187 L91 139 Z" fill="#080a0c"/>
-                    <path d="M145 112 L158 108" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-                    <circle cx="161" cy="108" r="5" fill="#fff"/>
-                    <circle cx="163" cy="108" r="2.5" fill="#ffc229"/>
+    <header class="header">
+        <a href="#home" class="logo" aria-label="GostVorOn — головна">
+            <span class="logo-mark">
+                <svg viewBox="0 0 64 64" role="img" aria-label="Ворон">
+                    <path d="M7 11 25 19 53 5 44 26 58 36 38 35 22 57 20 39 5 31 20 28Z" fill="currentColor"/>
+                    <path d="M20 28 43 13 35 31 20 39Z" fill="#171819"/>
+                    <path d="M8 11 20 28 5 31Z" fill="#ffc229"/>
+                    <circle cx="43" cy="20" r="2.8" fill="#ffc229"/>
+                    <path d="M23 39 38 35 31 48Z" fill="#ffc229"/>
                 </svg>
+            </span>
+            <span>GOSTVOR<span class="gold">ON</span></span>
+        </a>
+        <nav class="navigation">
+            <a href="#home">Головна</a>
+            <a href="#restaurants">Заклади</a>
+            <button class="nav-button" id="cart-button" type="button">
+                🛒 Кошик <span id="cart-count">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="eyebrow">ТВОЯ УЛЮБЛЕНА ЇЖА — БЛИЖЧЕ</p>
+                <h1>Голодний?<br>Ми вже <span class="gold">летимо!</span></h1>
+                <p class="hero-description">
+                    Замовляй улюблені страви з найкращих закладів.
+                    Швидко, зручно та смачно.
+                </p>
+                <form class="search-form" id="search-form">
+                    <input id="address" type="text" placeholder="Введи свою адресу..." aria-label="Адреса доставки">
+                    <button type="submit">Знайти їжу</button>
+                </form>
+                <p id="search-message" class="search-message" aria-live="polite"></p>
             </div>
-            <div class="hero-tag"><span>✦</span><p>Доставка<br>з характером</p></div>
+            <div class="hero-image">
+                <div class="hero-circle"></div>
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85" alt="Бургер">
+                <div class="floating-label">Смачно <span>★ 4.9</span></div>
+            </div>
+        </section>
+
+        <section class="restaurants-section" id="restaurants">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ОБИРАЙ СВОЄ</p>
+                    <h2>Популярні <span class="gold">заклади</span></h2>
+                </div>
+                <div class="restaurant-tools">
+                    <input type="search" id="restaurant-filter" placeholder="Знайти заклад..." aria-label="Пошук закладу">
+                    <span class="restaurant-count" id="restaurant-count">30 закладів</span>
+                </div>
+            </div>
+            <div class="cards" id="restaurant-cards"></div>
+            <p id="empty-message" class="empty-message" hidden>Нічого не знайдено. Спробуй іншу назву.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#home" class="logo">
+            <span class="logo-mark">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <path d="M7 11 25 19 53 5 44 26 58 36 38 35 22 57 20 39 5 31 20 28Z" fill="currentColor"/>
+                    <path d="M20 28 43 13 35 31 20 39Z" fill="#171819"/>
+                    <path d="M8 11 20 28 5 31Z" fill="#ffc229"/>
+                    <circle cx="43" cy="20" r="2.8" fill="#ffc229"/>
+                    <path d="M23 39 38 35 31 48Z" fill="#ffc229"/>
+                </svg>
+            </span>
+            <span>GOSTVOR<span class="gold">ON</span></span>
+        </a>
+        <p>© 2026 GostVorOn. Демонстраційний проєкт.</p>
+    </footer>
+
+    <section class="modal-overlay" id="order-menu" hidden>
+        <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="order-title">
+            <button class="close-button" id="close-order" type="button" aria-label="Закрити">✕</button>
+            <p class="eyebrow">ТВОЄ ЗАМОВЛЕННЯ</p>
+            <h2 id="order-title">Назва закладу</h2>
+            <p id="order-category" class="muted"></p>
+            <div class="quantity-row">
+                <div>
+                    <strong>Кількість</strong>
+                    <p class="muted small">Обери потрібну кількість</p>
+                </div>
+                <div class="quantity-controls">
+                    <button id="minus" type="button" aria-label="Зменшити кількість">−</button>
+                    <span id="quantity">1</span>
+                    <button id="plus" type="button" aria-label="Збільшити кількість">+</button>
+                </div>
+            </div>
+            <div class="price-row">
+                <span>Ціна за одиницю</span>
+                <strong id="unit-price">150 грн</strong>
+            </div>
+            <div class="price-row total-row">
+                <span>Разом</span>
+                <strong id="total-price">150 грн</strong>
+            </div>
+            <button class="primary-button full-button" id="add-to-cart" type="button">Додати в кошик</button>
+            <p id="order-message" class="status-message" aria-live="polite"></p>
         </div>
     </section>
 
-    <section class="restaurants" id="restaurants">
-        <div class="section-heading">
-            <div>
-                <h2><span class="dash">—</span> Популярні заклади</h2>
-                <p>Обирай, що сьогодні хочеться скуштувати</p>
+    <section class="modal-overlay" id="cart-menu" hidden>
+        <div class="modal-window cart-window" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+            <button class="close-button" id="close-cart" type="button" aria-label="Закрити">✕</button>
+            <p class="eyebrow">GOSTVORON DELIVERY</p>
+            <h2 id="cart-title">Твій кошик</h2>
+            <div id="cart-items"></div>
+            <div class="price-row total-row">
+                <span>Загальна сума</span>
+                <strong id="cart-total">0 грн</strong>
             </div>
-            <div class="section-mark">G / V</div>
+            <button class="primary-button full-button" id="checkout-button" type="button" disabled>Кошик порожній</button>
+            <p id="cart-message" class="status-message" aria-live="polite"></p>
         </div>
-
-        <div class="filter-bar">
-            <input type="search" id="restaurant-filter" placeholder="Знайти ресторан або кухню..." aria-label="Пошук ресторанів">
-            <span id="restaurant-count">30 закладів</span>
-        </div>
-
-        <div class="cards" id="restaurant-cards"></div>
-        <p class="empty-message" id="empty-message" hidden>Нічого не знайдено. Спробуй інший пошуковий запит.</p>
     </section>
-</main>
-
-<footer id="cart">
-    <p class="footer-logo">Gost<span>VorOn</span></p>
-    <p>Доставка з характером ворона.</p>
-    <p class="copyright">© 2026 GostVorOn</p>
-</footer>
-
 </body>
 </html>
