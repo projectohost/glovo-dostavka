@@ -97,7 +97,6 @@ function createCard(restaurant) {
     image.alt = restaurant.name;
     image.loading = "lazy";
 
-    // Якщо головне фото не відкриється, пробуємо інші фото
     const imageOptions = [
         `https://images.unsplash.com/photo-${restaurant.photo}?auto=format&fit=crop&w=700&q=85`,
         ...fallbackPhotos.map(photo =>
@@ -113,7 +112,6 @@ function createCard(restaurant) {
         if (imageIndex < imageOptions.length) {
             this.src = imageOptions[imageIndex];
         } else {
-            // Останній запасний варіант, якщо зовнішні фото недоступні
             this.onerror = null;
             this.src = makeFallbackImage(restaurant.emoji);
         }
@@ -162,7 +160,7 @@ function createCard(restaurant) {
 function renderRestaurants(list) {
     cards.replaceChildren();
     list.forEach(restaurant => cards.appendChild(createCard(restaurant)));
-    count.textContent = `${list.length} закладів`;
+    count.textContent = `${list.length} меню`;
     emptyMessage.hidden = list.length !== 0;
 }
 
@@ -196,7 +194,7 @@ document.getElementById("search-form").addEventListener("submit", event => {
         return;
     }
 
-    message.textContent = `Адресу «${address}» введено. Обери заклад для замовлення.`;
+    message.textContent = `Адресу «${address}» введено. Обери меню для замовлення.`;
     document.getElementById("restaurants").scrollIntoView({ behavior: "smooth" });
 });
 
@@ -266,7 +264,11 @@ document.getElementById("add-to-cart").addEventListener("click", () => {
     updateCart();
     orderMessage.textContent = `Додано до кошика: ${quantity} шт.`;
     cartMessage.textContent = "";
-});
+
+    setTimeout(() => {
+        closeOrder();
+    }, 1000);
+    });
 
 function getCartCount() {
     return cart.reduce((sum, item) => sum + item.quantity, 0);
